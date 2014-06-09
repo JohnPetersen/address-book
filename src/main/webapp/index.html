@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Address Book</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap-theme.css">
+<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/typeahead.bundle.js"></script>
+<script type="text/javascript" src="js/datatypes.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+  <div id="modalSignIn" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="modalSignInLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalSignInLabel">Sign in or Register</h3>
+        </div>
+        <div class="modal-body">
+          <form id="formSignIn" class="form-horizontal">
+            <div id="signInMessage" class="control-group" style="color:DarkRed; display:none">
+              Incorrect user name or password.
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="txtName">Name</label>
+              <div class="controls">
+                <input type="text" id="txtName" class="form-control" placeholder="Your name">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="txtPassword">Password</label>
+              <div class="controls">
+                <input type="password" id="txtPassword" class="form-control"
+                  placeholder="Password">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="btnRegister" class="btn btn-default">Register</button>
+          <button id="btnSignIn" class="btn btn-primary">Sign
+            In</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- end: modalSignIn -->
+  <div id="modalAddEditContact" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="modalAddEditContactLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalAddEditContactLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <form id="formAddEditContact" class="form-horizontal">
+            <input id="txtContactId" type="hidden"></input>
+            <div class="control-group">
+              <label class="control-label" for="txtContactName">Name</label>
+              <div class="controls">
+                <input type="text" id="txtContactName" class="form-control" placeholder="John Smith">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="txtContactStreet">Street</label>
+              <div class="controls">
+                <input type="text" id="txtContactStreet" class="form-control" placeholder="123 Main St">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="txtContactCity">City</label>
+              <div class="controls">
+                <input type="text" id="txtContactCity" class="form-control" placeholder="Springfield">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="txtContactState">State</label>
+              <div class="controls">
+                <input type="text" id="txtContactState" class="form-control" placeholder="CA">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="txtContactZip">Zip Code</label>
+              <div class="controls">
+                <input type="text" id="txtContactZip" class="form-control" placeholder="90210">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="txtContactPhone">Phone Number</label>
+              <div class="controls">
+                <input type="text" id="txtContactPhone" class="form-control" placeholder="###-###-####">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button id="btnSaveContact" type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- end: modalAddEditContact -->
+  <div class="container">
+    <h1>Address Book</h1>
+    <div class="pull-right"><input id="txtSearch" type="text" class="typeahead form-control" placeholder="Search"></div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Street</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip</th>
+          <th>Phone</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="contact-table"></tbody>
+    </table>
+    <button id="btnAddEditContact" type="button" class="btn btn-default">
+      <span class="glyphicon glyphicon-plus"></span> New
+    </button>
+  </div>
+</body>
+</html>
